@@ -1,16 +1,13 @@
 const apikey = process.env.API_KEY 
+const welcome = document.querySelector(".heading--bottom");
+const dropDown = document.querySelector(".games--dropdown")
+
+
 
 const PageDetail = (argument = '') => {
-  const render1 = () => {
-    pageContent.innerHTML = `
-      <section class="page-detail">
-      <h2> DETAILS </h2>
-        <div class="articles">Hey, this page is a PageDetail template, about : ${argument}</div>
-      </section>
-    `;
-  };
-  render1();
 
+  welcome.classList.add("show-more--hide")
+  dropDown.classList.add("hide")
 
 const preparePage = () => {
   const cleanedArgument = argument.replace(/\s+/g, "-");
@@ -18,18 +15,12 @@ const preparePage = () => {
   const displayGame = (gameData) => {
     const { background_image, website, name, rating, ratings_count, description, released, developers, platforms, publishers, genres, tags, stores, background_image_additional, id } = gameData;
     console.log(gameData)
-    // const headerDOM = document.querySelector(".heading--bottom");
-    // const dropdownDOM = document.querySelector(".games--dropdown");
     const heroDOM = document.querySelector(".page-hero");
     const articleDOM = document.querySelector(".page-detail .article");
     const buyDOM = document.querySelector(".page-detail .buy");
     const screenshotsDOM = document.querySelector(".page-detail .screenshots");
     const trailersDOM = document.querySelector(".page-detail .trailers");
-    // const showmoreDOM = document.querySelector("#show-more");
 
-    // headerDOM.remove();
-    // dropdownDOM.remove();
-    // showmoreDOM.remove();
     heroDOM.innerHTML = `
       <img class="hero-image" src="${background_image}">
       <a href="${website}" target="_blank">

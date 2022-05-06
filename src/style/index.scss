@@ -1,12 +1,85 @@
-$color-red: rgb(255, 20, 20);
-
-p {
-  color: $color-red;
-}
-
 $bg-color: #191919;
 $primary-color: #fff;
 $title-color: #d20a32;
+$font-size-m: 24px;
+$font-size-s: 16px;
+$margin-top-l: 100px;
+
+@mixin flex-row-s-b {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@mixin font-norm-bold  {
+  font-style: normal;
+  font-weight: bold;
+}
+
+@mixin mobile {
+
+@media screen and (max-width: 768px) {
+  @content;
+}}
+
+
+@include mobile {
+ 
+  body {
+    width: 80%;
+    font-size: smaller;
+  }
+
+  h1 {
+    font-size: 200%;
+  }
+
+  .heading--top {
+    width: 80%;
+  }
+
+  .check-website {
+    left: 10%;
+  }
+
+  .tags {
+    width: 25%;
+  }
+
+  .heading--bottom {
+    width: 100%;
+    height: 300px;
+  }
+
+  .pageContent {
+    width: 80%;
+  }
+
+  .articles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardGame {
+    width: 100%;
+  }
+
+  .games {
+    margin-top: $margin-top-l;
+  }
+
+  .games .game--details {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+
+
+
+p {
+  color: $primary-color;
+}
 
 body {
   background-color: $bg-color;
@@ -18,59 +91,53 @@ body {
   margin-right: auto;
 }
 
-
-
-// a, a:visited {
-// 	text-decoration: none;
-// 	position: relative;
-// 	color: #069;
+.a--underlined, a:visited {
+	text-decoration: none;
+	position: relative;
+	color: $primary-color;
 	
-// 	&:after {
-// 		content: '';
-// 		height: 3px;
-// 		position: absolute;
-// 		bottom: 0;
-// 		left: 0;
-// 		width: 0%;
-// 		background: #069;
-// 		transition: 0.2s;
-// 	}
+	&:after {
+		content: '';
+		height: 3px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background: $primary-color;
+		transition: 0.2s;
+	}
 
-// 	&:hover:after {
-// 		width: 100%;
-// 	}
+	&:hover:after {
+		width: 80%;
+	}
 	
-// 	&.block {
-// 		display: block;
-// 		padding: 0.5em;
+	&.block {
+		display: block;
+		padding: 0.5em;
 		
-// 		&:hover {
-// 			background: #eee;
-// 		}
-// 	}
-// }
+		&:hover {
+			background: $primary-color;
+		}
+	}
+}
 
 a {
   color: inherit;
   text-decoration: inherit;
 }
 
-// a[href*='//'] {
-//   color: inherit;
-//   text-decoration: inherit;
-// }
 
-h1 {
-  color: $title-color;
+
+
+h1.a--underlined {
+  color: $title-color !important;
   font-size: 48px;
 }
 
 .heading--top {
   width: 921px;
   height: 66px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+ @include flex-row-s-b;
   align-items: center;
 }
 
@@ -88,7 +155,7 @@ h1 {
   }
 
   .heading--bottom__paragraph {
-    font-size: 16px;
+    font-size: $font-size-s;
     color: $primary-color;
   }
 }
@@ -100,7 +167,7 @@ h1 {
     height: 50px;
     width: 384px;
     background: $title-color;
-    font-size: 24px;
+    font-size: $font-size-m;
     color: $primary-color;
     text-align: center;
     display: flex;
@@ -142,7 +209,7 @@ h1 {
     font-family: "Lato";
     background-color: $title-color;
     border: none;
-    font-size: 24px;
+    font-size: $font-size-m;
     color: $primary-color;
   }
 
@@ -178,11 +245,14 @@ h1 {
     position: absolute;
     font-weight: normal;
     width: 100%;
+    color: $primary-color
   }
 
   .game--title {
     margin-top: 5px;
     margin-bottom: 5px;
+    font-size: $font-size-m;
+    padding-right: 15%;
   }
 }
 .articles {
@@ -199,6 +269,7 @@ h1 {
   font-size: 13px;
   overflow: hidden;
   max-width: 100%;
+  color:$primary-color;
 }
 
 .game--feed {
@@ -220,7 +291,7 @@ h1 {
   width: 50px;
   border-style: none;
   padding: 10px;
-  font-size: 18px;
+  font-size: $font-size-s;
   letter-spacing: 2px;
   outline: none;
   border-radius: 25px;
@@ -231,7 +302,7 @@ h1 {
 }
 #site-search::placeholder {
   color: #616161;
-  font-size: 18px;
+  font-size: $font-size-s;
   letter-spacing: 2px;
   font-weight: 100;
 }
@@ -239,7 +310,7 @@ h1 {
   width: 50px;
   height: 50px;
   border-style: none;
-  font-size: 20px;
+  font-size: $font-size-s;
   font-weight: bold;
   outline: none;
   cursor: pointer;
@@ -278,22 +349,37 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: $margin-top-l;
+}
+
+.game-platforms {
+  padding-right: 15%;
+}
+
+.platform--icon {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
 }
 
 #show-more {
   background: $title-color;
   width: 223px;
   height: 51px;
-  font-size: 24px;
+  font-size: $font-size-m;
   color: $primary-color;
-  text-align: center;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
+@include font-norm-bold;
   line-height: 29px;
   text-align: center;
   border: none;
+}
+
+.show-more--hide {
+  display: none ;
+}
+
+.hide {
+  visibility: hidden;
 }
 
 .page-hero {
@@ -317,9 +403,7 @@ h1 {
 }
 
 .article--top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+ @include flex-row-s-b;
   align-items: center;
 }
 
@@ -335,9 +419,8 @@ h1 {
 .rating {
   height: 29px;
   top: calc(50% - 29px / 2 - 141.5px);
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
+ @include font-norm-bold;
+  font-size: $font-size-m;
   line-height: 29px;
   color: $title-color;
 }
@@ -358,13 +441,13 @@ h1 {
   padding-left: 20px;
   padding-right: 20px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: $font-size-s;
 }
 
 .store-links {
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: $font-size-s;
   line-height: 19px;
   color: $primary-color;
   text-decoration: underline $title-color;
@@ -372,61 +455,15 @@ h1 {
 }
 
 .screenshots-links {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @include flex-row-s-b;
   max-width: 100%;
 }
 .screenshots-img {
   width: 48%;
 }
 
-@media screen and (max-width: 768px) {
-  body {
-    width: 80%;
-    font-size: smaller;
-  }
 
-  h1 {
-    font-size: 200%;
-  }
 
-  .heading--top {
-    width: 80%;
-  }
 
-  .check-website {
-    left: 10%;
-  }
 
-  .tags {
-    width: 25%;
-  }
 
-  .heading--bottom {
-    width: 100%;
-    height: 300px;
-  }
-
-  .pageContent {
-    width: 80%;
-  }
-
-  .articles {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cardGame {
-    width: 100%;
-  }
-
-  .games {
-    margin-top: 100px;
-  }
-
-  .games .game--details {
-    width: 100%;
-    height: 300px;
-  }
-}

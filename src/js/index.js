@@ -1,15 +1,6 @@
 import '../style/index.scss'; // Attention ici, il faut bien mettre l'extension `.scss`
 import routes from './routes';
 
-
-
-console.log("Hello Avina the Red!")
-
-const aa = () => console.log("love")
-aa();
-
-
-
 //router
 
 const callRoute = () => {
